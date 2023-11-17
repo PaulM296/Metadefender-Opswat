@@ -25,3 +25,5 @@ async function uploadFile(): Promise<string> {
         process.exit(1);
     }
 }
+
+export default uploadFile();
