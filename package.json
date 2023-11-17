@@ -1,0 +1,24 @@
+{
+  "name": "metadefender-opswat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulM296/Metadefender-Opswat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PaulM296/Metadefender-Opswat/issues"
+  },
+  "homepage": "https://github.com/PaulM296/Metadefender-Opswat#readme",
+  "dependencies": {
+    "@types/node": "^20.9.1",
+    "axios": "^1.6.2"
+  }
+}
