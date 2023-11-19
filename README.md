@@ -11,7 +11,7 @@ In order for the project to work, you must make sure you have the following inst
 
 Also, you must change the following in the config.ts file:
 
-- API_KEY with the one obtaine dafter registering an account to metadefender.opswat.com
+- API_KEY with the one obtained dafter registering an account to metadefender.opswat.com
 - FILE_PATH with the path to the file that you want to scan
 
 ## Installation steps
