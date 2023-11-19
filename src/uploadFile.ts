@@ -3,7 +3,7 @@ import * as fs from "fs";
 import FormData from "form-data";
 import axios from "axios";
 
-async function uploadFile(): Promise<string> {
+export async function uploadFile(): Promise<string> {
     const url = `${BASE_URL}/file`;
     const headers = { "apikey": API_KEY };
     const fileContent = await fs.createReadStream(FILE_PATH);
@@ -25,5 +25,3 @@ async function uploadFile(): Promise<string> {
         process.exit(1);
     }
 }
-
-export default uploadFile();

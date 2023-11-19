@@ -16,18 +16,19 @@ const axios_1 = __importDefault(require("axios"));
 const config_1 = require("../config");
 function hashLookup(hash_file, base_url = config_1.BASE_URL) {
     return __awaiter(this, void 0, void 0, function* () {
-        const url = "${base_url}/hash/${hash_file}";
+        const url = `${base_url}/hash/${hash_file}`;
         const headers = { "apikey": config_1.API_KEY };
         try {
             const response = yield axios_1.default.get(url, { headers });
+            console.log("RESPONSE STATUS: " + response.status);
             if (response.status === 200) {
-                return response.data;
+                return response;
             }
             else if (response.status === 404) {
                 return null;
             }
             else {
-                throw new Error('Error: ${response.status}');
+                throw new Error("Error: ${response.status}");
             }
         }
         catch (error) {

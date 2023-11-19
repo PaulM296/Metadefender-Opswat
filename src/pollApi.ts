@@ -1,5 +1,6 @@
 import { BASE_URL, API_KEY, FILE_PATH } from "../config";
 import axios from "axios";
+import {displayResults} from "./displayResults";
 
 
 export async function pollApi(data_id: string): Promise<string> {
@@ -14,9 +15,7 @@ export async function pollApi(data_id: string): Promise<string> {
                     const result = response.data.scan_results.scan_all_result_a;
 
                     if (result !== "In Progress") {
-                        return result;
-                    } else {
-                        console.error(`Error: ${response.status}`);
+                        displayResults(response);
                         process.exit(1);
                     }
                 }
@@ -25,6 +24,6 @@ export async function pollApi(data_id: string): Promise<string> {
                 process.exit(1);
             }
 
-        await new Promise(resolve => setTimeout(resolve, 100000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
     }
 }

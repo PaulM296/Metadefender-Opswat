@@ -15,6 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const config_1 = require("../config");
 const calculateHash_1 = require("./calculateHash");
 const hashLookup_1 = __importDefault(require("./hashLookup"));
+const uploadFile_1 = require("./uploadFile");
+const pollApi_1 = require("./pollApi");
+const displayResults_1 = require("./displayResults");
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -22,14 +25,21 @@ function main() {
             console.log(`File SHA-256: ${hashFile}`);
             const lookupResult = yield (0, hashLookup_1.default)(hashFile);
             if (lookupResult) {
-                console.log("Results found in cache");
+                console.log('Results found in cache:');
+                (0, displayResults_1.displayResults)(lookupResult);
             }
             else {
-                console.log("results not found!");
+                console.log('No results found in cache!');
+                const data_id = yield (0, uploadFile_1.uploadFile)();
+                console.log(`File uploaded successfully. Data ID: ${data_id}`);
+                console.log('Polling results.');
+                const result = yield (0, pollApi_1.pollApi)(data_id);
+                console.log('Results received:');
+                console.log(result);
             }
         }
         catch (error) {
-            console.error("Error!");
+            console.error(`Error: ${error}`);
         }
     });
 }
